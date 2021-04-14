@@ -35,7 +35,7 @@ var Promise = require('promise')
 /**
 *   Defines KiCad Revision number
 */
-var KiCadXMLRevision = 'D'
+var KiCadXMLRevision = ['D', 'E']
 
 /**
 * Holds the components list.
@@ -297,7 +297,7 @@ function LoadComponentFromXML (config) {
             Components.inputType = 'XML'
             Components.version = Components.inputData.export.$.version
 
-            if (Components.version !== KiCadXMLRevision) {
+            if (!KiCadXMLRevision.includes(Components.version)) {
               return reject('Incompatible KiCad XML version: Expected ' + KiCadXMLRevision + ' Found ' + Components.version)
             }
 
